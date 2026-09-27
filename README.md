@@ -64,12 +64,13 @@ Il software è stato suddiviso nei seguenti moduli principali:
 
 L'architettura del software prevede che i moduli interagiscano tra loro in modo sequenziale:
 ### 1. Da GraphBuilder a MinimaxSolver
-    * **Dati scambiati:** Il grafo della sola componente connessa principale, rappresentato tramite la lista di adiacenza con vertici rinumerati nell'intervallo compatto $[0, \vert{}V_{LCC}\vert{} - 1]$.
-    * **Dinamica:** `GraphBuilder` conclude la fase di pulizia, scarta i nodi isolati ed estrae la componente connessa più grande. Consegna questa struttura a `MinimaxSolver`, che può così applicare l'ordinamento degli archi e l'algoritmo di Kruskal senza il rischio di trovare partizioni disconnesse.
+* **Dati scambiati:** Il grafo della sola componente connessa principale, rappresentato tramite la lista di adiacenza con vertici rinumerati nell'intervallo compatto $[0, \vert{}V_{LCC}\vert{} - 1]$.
+* **Dinamica:** `GraphBuilder` conclude la fase di pulizia, scarta i nodi isolati ed estrae la componente connessa più grande. Consegna questa struttura a `MinimaxSolver`, che può così applicare l'ordinamento degli archi e l'algoritmo di Kruskal senza il rischio di trovare partizioni disconnesse.
 
-### 2. Da GraphBuilder a ExperimentalAnalyzer
+### 2. Da `GraphBuilder` a `MinimaxSolver`
 * **Dati scambiati:** Il vettore completo dei pesi degli archi e le metriche topologiche aggregate (numero totale di nodi e archi del grafo originale a confronto con quelli della componente connessa principale).
 * **Dinamica:** `GraphBuilder` mette a disposizione di `ExperimentalAnalyzer` i dati quantitativi estratti, permettendo al modulo di calcolare le statistiche strutturali e generare il grafico di distribuzione delle frequenze.
+
 
 ### 3. Da MinimaxSolver a ExperimentalAnalyzer
 * **Dati scambiati:** I costi minimax ottimi per le coppie di nodi interrogate e le metriche prestazionali.

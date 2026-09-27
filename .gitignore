@@ -1,0 +1,26 @@
+# File di sistema operativo
+Thumbs.db
+.DS_Store
+
+# File di output della compilazione
+*.o
+src/*.o
+*.exe
+main
+*.out
+
+# Dataset voluminosi
+*.bz2
+data/*.bz2
+*.all-paths
+data/*.all-paths
+
+# File di output e gestione eccezioni
+data/output_*.txt
+*.log
+!data/toy_paths.txt
+
+# Configurazioni dell'editor di testo 
+.vscode/
+*~
+*.swp
